@@ -1,11 +1,13 @@
+const MOVIE_URL = "https://www.imdb.com/title/";
+
 export class ListRecord {
   constructor() {}
 
-  createListElement(image, description) {
+  createListElement(image, title, movieID) {
     const listElement = document.createElement("li");
     listElement.classList.add("entry");
     listElement.appendChild(this.createImageElement(image));
-    listElement.appendChild(this.createImageDescription(description));
+    listElement.appendChild(this.createImageTitle(title, movieID));
     return listElement;
   }
   createImageElement(image) {
@@ -15,10 +17,16 @@ export class ListRecord {
     imgElement.setAttribute("alt", "Cover");
     return imgElement;
   }
-  createImageDescription(description) {
+  createImageTitle(title, id) {
     const paragraph = document.createElement("p");
     paragraph.classList.add("entry__name");
-    paragraph.textContent = description;
+    paragraph.appendChild(createAnchorElement(title, `${MOVIE_URL}${id}`));
     return paragraph;
+  }
+  createAnchorElement(title, link) {
+    const anchorElement = document.createElement("a");
+    anchorElement.setAttribute("href", link);
+    anchorElement.textContent = title;
+    return anchorElement;
   }
 }
