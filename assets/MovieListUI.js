@@ -1,23 +1,28 @@
 import { ListRecord } from "./movielist/ListRecord.js";
 
 export class MovieListUI {
-  constructor(container) {
+  constructor(container, className) {
     this.container = container;
     this.listRecord = new ListRecord();
+    this.list;
+    this.createList(className);
   }
   createList(className) {
     const list = document.createElement("ul");
     list.classList.add(className);
-    return list;
+    this.list = list;
+    this.container.appendChild(list);
   }
   pushMovieData(data) {
-    const list = createList("results");
     data.results.forEach(result => {
-      list.appendChild(
-        this.listRecord.createElement(result.image, result.title, result.id)
+      this.list.appendChild(
+        this.listRecord.createListElement(result.image, result.title, result.id)
       );
     });
-    return list;
+    //return list;
   }
-
+  fillList(data) {
+    this.list.innerHTML = "";
+    this.pushMovieData(data);
+  }
 }

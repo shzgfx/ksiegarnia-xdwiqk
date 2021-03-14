@@ -20,7 +20,7 @@ export class ListRecord {
   createImageTitle(title, id) {
     const paragraph = document.createElement("p");
     paragraph.classList.add("entry__name");
-    paragraph.appendChild(createAnchorElement(title, `${MOVIE_URL}${id}`));
+    paragraph.appendChild(this.createAnchorElement(title, `${MOVIE_URL}${id}`));
     return paragraph;
   }
   createAnchorElement(title, link) {

@@ -6,7 +6,6 @@ export class SearchUI {
     this.container = container;
     this.button = new Button();
     this.input = new Input();
-    //this.fetchData = new FetchData();
     this.subscribers = [];
     this.appendElement();
   }
