@@ -1,13 +1,13 @@
 export class Button {
   constructor() {
-    this.subscribers = [];
+    this.button;
   }
 
   createButton(name) {
     const button = document.createElement("button");
     button.setAttribute("id", "form__button");
     button.textContent = name;
-    this.notifySubscriber(button);
+    this.button = button;
     return button;
   }
 
