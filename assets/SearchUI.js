@@ -2,11 +2,13 @@ import { Input } from "./search/input.js";
 import { Button } from "./search/button.js";
 
 export class SearchUI {
-  constructor() {
+  constructor(container) {
+    this.container = container;
     this.button = new Button();
     this.input = new Input();
     //this.fetchData = new FetchData();
     this.subscribers = [];
+    this.appendElement();
   }
 
   createForm() {
@@ -26,5 +28,9 @@ export class SearchUI {
         subscriber(this.input.inputField.value)
       );
     });
+  }
+
+  appendElement() {
+    this.container.appendChild(this.createForm());
   }
 }
